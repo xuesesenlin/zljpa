@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en"
+      xmlns:shiro="http://shiro.apache.org/tags"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="context-path" th:content="@{/}"/>
+    <title>专利数据管理系统</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet"/>
+    <link th:href="@{/css/animate.css}" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/date/css/date.css}"/>
+    <!--<link th:href="@{/css/plugins/fullcalendar/fullcalendar.css}" rel="stylesheet"/>-->
+</head>
+
+<body>
+<div id="wrapper">
+    <input type="hidden" id="path"/>
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <span>
+                            <a th:href="@{/home/index}">
+                                <img alt="专利局" class="img-circle" th:src="@{/img/zlj.png}"/>
+                            </a>
+                        </span>
+                        <shiro:lacksRole name="superAdmin">
+                            <a data-toggle="dropdown" class="dropdown-toggle">
+                            <span class="clear">
+                                <span class="block m-t-xs">
+                                    <strong class="font-bold" th:text="${user}"></strong>
+                             </span>
+                                <span class="text-muted text-xs block">个人资料<b class="caret"></b></span>
+                            </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a onclick="cli(this)" data-target="/account/toPWD" target="">修改密码</a></li>
+                            </ul>
+                        </shiro:lacksRole>
+                    </div>
+                    <div class="logo-element">
+                        ZL+
+                    </div>
+                </li>
+
+                <shiro:hasRole name="superAdmin">
+                    <li>
+                        <a>
+                            <i class="fa fa-cog"></i>
+                            <span class="nav-label">权限管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li><a onclick="cli(this)" data-target="/jurisdiction/init">权限管理</a></li>
+                            <li><a onclick="cli(this)" data-target="/PermissionsInitialization">权限初始化</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-cog"></i>
+                            <span class="nav-label">健康监控</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li><a onclick="cli(this)" data-target="/healthMonitoring/health">系统状况</a></li>
+                            <li><a onclick="cli(this)" data-target="/healthMonitoring/env">环境变量</a></li>
+                            <li><a onclick="cli(this)" data-target="/healthMonitoring/metrics">监控</a></li>
+                            <li><a onclick="cli(this)" data-target="/healthMonitoring/trace">最近请求</a></li>
+                        </ul>
+                    </li>
+                </shiro:hasRole>
+
+                <shiro:hasRole name="admin">
+                    <!--管理员菜单-->
+                    <li>
+                        <a>
+                            <i class="fa fa-cog"></i>
+                            <span class="nav-label">组织机构</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li><a onclick="cli(this)" data-target="/organization/init">组织机构</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-cog"></i>
+                            <span class="nav-label">角色管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li><a onclick="cli(this)" data-target="/role/init">角色</a></li>
+                        </ul>
+                    </li>
+                    <!--<li>-->
+                    <!--<a>-->
+                    <!--<i class="fa fa-cog"></i>-->
+                    <!--<span class="nav-label">数据库管理</span>-->
+                    <!--<span class="fa arrow"></span>-->
+                    <!--</a>-->
+                    <!--<ul class="nav nav-second-level">-->
+                    <!--<li><a onclick="cli(this)" data-target="/mysql/back">数据库备份</a></li>-->
+                    <!--</ul>-->
+                    <!--</li>-->
+                </shiro:hasRole>
+
+                <shiro:hasRole name="user">
+                    <!--user-->
+                    <!--任意角色-->
+                    <li>
+                        <a>
+                            <i class="fa fa-cog"></i>
+                            <span class="nav-label">政策法规</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li><a id="policy_home" onclick="cli(this)" data-target="/policy/init">政策法规</a></li>
+                            <li><a onclick="cli(this)" data-target="/policyType/init">法律法规类型</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-cog"></i>
+                            <span class="nav-label">开发区(园区)介绍</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li><a onclick="cli(this)" id="development_home"
+                                   data-target="/development/init">开发区介绍</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-cog"></i>
+                            <span class="nav-label">专利服务机构</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li><a id="patentServiceAgency_home" onclick="cli(this)"
+                                   data-target="/patentServiceAgency/init">专利服务机构</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a>
+                            <i class="fa fa-cog"></i>
+                            <span class="nav-label">专利提升行动</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li><a onclick="cli(this)" data-target="/xlsjgl/init">消零数据管理</a></li>
+                            <li><a onclick="cli(this)" data-target="/xsqxlsj/init">县市区消零数据</a></li>
+                            <li><a onclick="cli(this)" data-target="/xlsjcx/init">消零数据查询</a></li>
+                            <li><a onclick="cli(this)" data-target="/xlsjtj/init">消零数据统计</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-cog"></i>
+                            <span class="nav-label">专利统计管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li><a onclick="cli(this)" data-target="/patentDataImport/init">专利数据导入</a></li>
+                            <li><a onclick="cli(this)" data-target="/patentDataPut/init">专利数据维护</a></li>
+                            <li><a onclick="cli(this)" data-target="/patentDataLocking/init">专利数据锁定</a></li>
+                            <li><a onclick="cli(this)" data-target="/patentDataQuery/init">专利数据查询</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-cog"></i>
+                            <span class="nav-label">专利统计报表</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li><a onclick="cli(this)" data-target="/monthlyReport/init">按月度报表</a></li>
+                            <li><a onclick="cli(this)" data-target="/annualStatistics/init">按年度统计</a></li>
+                            <li><a onclick="cli(this)" data-target="/county/init">按所属县市（区）统计</a></li>
+                            <li><a onclick="cli(this)" data-target="/applicantTypeStatistics/init">按申请人类型统计</a></li>
+                            <li><a onclick="cli(this)" data-target="/patentTypeStatistics/init">按专利类型统计</a></li>
+                        </ul>
+                    </li>
+                    <!--<li>-->
+                    <!--<a>-->
+                    <!--<i class="fa fa-cog"></i>-->
+                    <!--<span class="nav-label">用户管理</span>-->
+                    <!--<span class="fa arrow"></span>-->
+                    <!--</a>-->
+                    <!--<ul class="nav nav-second-level">-->
+                    <!--<li><a onclick="cli(this)" data-target="/people/init">用户管理</a></li>-->
+                    <!--</ul>-->
+                    <!--</li>-->
+                    <li>
+                        <a>
+                            <i class="fa fa-cog"></i>
+                            <span class="nav-label">基础数据管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li><a onclick="cli(this)" data-target="/keyEnterprises/init">重点企业管理</a></li>
+                            <li><a onclick="cli(this)" data-target="/regionCode/init">地域代码维护</a></li>
+                            <li><a onclick="cli(this)" data-target="/czdzbsx/init">县市园区管理</a></li>
+                            <li><a onclick="cli(this)" data-target="/pmc/init">省市县设置</a></li>
+                            <!--<li><a onclick="cli(this)" data-target="/patentTypes/init">专利类型设置</a></li>-->
+                            <!--<li><a onclick="cli(this)" data-target="/companyTypes/init">企业类型设置</a></li>-->
+                        </ul>
+                    </li>
+                </shiro:hasRole>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <!--<div class="container">-->
+                <!--<div class="row">-->
+                <!--<div class="span4">-->
+                <!--<ul class="breadcrumb">-->
+                <!--<li>-->
+                <!--<a href="#">Home</a> <span class="divider">></span>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<a href="#">Tutorials</a> <span class="divider">></span>-->
+                <!--</li>-->
+                <!--<li class="active">HTML5</li>-->
+                <!--</ul>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <span class="m-r-sm text-muted welcome-message">欢迎来到专利信息管理系统</span>
+                    </li>
+                    <!--<li>-->
+                    <!--<a onclick="cli(this)" data-target="/realcom/init">-->
+                    <!--<i class="fa fa-envelope"></i> 通讯-->
+                    <!--</a>-->
+                    <!--</li>-->
+                    <li>
+                        <a th:href="@{/login/logout}">
+                            <i class="fa fa-sign-out"></i> 退出
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        <div class="row content">
+            <div class="col-sm-3">
+                <h2>专利信息管理系统</h2>
+                <small></small>
+            </div>
+            <div class="col-sm-9">
+                <!--<iframe width="800"-->
+                <!--scrolling="no"-->
+                <!--height="120"-->
+                <!--frameborder="0"-->
+                <!--allowtransparency="true"-->
+                <!--src="http://i.tianqi.com/index.php?c=code&#38;id=19&#38;color=%23FF0000&#38;icon=5&#38;py=shijiazhuang&#38;temp=1&#38;num=5&#38;site=12"></iframe>-->
+                <!--<label>石家庄天气</label>-->
+                <!--<table class="table table-striped table-bordered table-hover dataTables-example">-->
+                <!--<thead>-->
+                <!--<th>日期</th>-->
+                <!--<th>高温</th>-->
+                <!--<th>低温</th>-->
+                <!--<th>风向</th>-->
+                <!--<th>风级</th>-->
+                <!--<th>空气质量指数</th>-->
+                <!--<th>天气</th>-->
+                <!--</thead>-->
+                <!--<tbody id="tq_database">-->
+                <!--</tbody>-->
+                <!--</table>-->
+                <!--<img src="#" alt="图片缺失" id="tq_img" style="width:400;height:200px;display:none;"/>-->
+            </div>
+            <!--<div class="col-sm-3">-->
+            <!--<input type="button" onclick="weather()" value="天气"/>-->
+            <!--</div>-->
+        </div>
+        <div class="footer">
+            <div class="pull-right">
+                <strong>技术支持：</strong> 品逸科技 &copy; 1970-2018
+            </div>
+            <div></div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/jquery-2.1.1.js}"></script>
+<script th:src="@{/js/jquery.cookie.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+<script th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+<script th:src="@{/js/inspinia.js}"></script>
+<script th:src="@{/js/index/index.js}"></script>
+<!--laydate-->
+<script th:src="@{/laydate/laydate.js}"></script>
+<!--<script th:src="@{/js/plugins/fullcalendar/fullcalendar.min.js}"></script>-->
+<!--<script th:src="@{/date/js/lhgcore.min.js.js}" type="text/javascript" charset="utf-8"></script>-->
+<!--<script th:src="@{/date/js/lhgcalendar.min.js}" type="text/javascript" charset="utf-8"></script>-->
+<!--在线编辑器-->
+<script th:src="@{/ckeditor/ckeditor.js}"></script>
+<script th:src="@{/ckeditor/config.js}"></script>
+<script th:inline="javascript">
+/*<![CDATA[*/
+var path = /*[[${#httpServletRequest.getScheme()
++ "://" + #httpServletRequest.getServerName()
++ ":" + #httpServletRequest.getServerPort()
++ #httpServletRequest.getContextPath()}]]*/;
+/*]]>*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

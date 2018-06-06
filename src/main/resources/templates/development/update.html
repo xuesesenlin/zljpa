@@ -1,0 +1,22 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12 col-xs-12 col-sm-12">
+            <form action="#" method="post" id="ro_form_save">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <input type="hidden" name="uuid" th:value="${uuid}"/>
+                        <label>标题</label>
+                        <input type="text" name="titles" style="width:70%"/>
+                        <input type="button" onclick="update()" value="确定"/>
+                        <input type="button" onclick="javascript:$('#development_home').click();" value="返回"/>
+                    </div>
+                    <div class="ibox-content">
+                        <textarea id="bodys" name="bodys" class="ckeditor"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/development/update.js}" type="text/javascript" charset="utf-8"></script>

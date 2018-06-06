@@ -1,0 +1,36 @@
+<div class="wrapper wrapper-content animated fadeInRight" id="parentDataImp_div">
+    <div class="row">
+        <div class="col-lg-12 col-xs-12 col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        在结束之前请勿关闭此页面
+                    </h5>
+                </div>
+                <div class="ibox-content">
+                    <!--<input id="impDate" name="impDate" placeholder="输入年月 格式：201801"/>-->
+                    <input id="file" type="file" name="file" style="display:none;" onchange="change_file(this)"/>
+                    <input class="btn btn-outline btn-primary btn-xs" type="button" value="选择文件"
+                           onclick="$('#file').click()"/>
+                    <input class="btn btn-outline btn-primary btn-xs" type="button" onclick="uploadFile()" value="上传"/>
+                    <span>文件名称格式为：aaaa_xxxxxx_xxxx.xls(aaaa为任意，不能为空)&nbsp;&nbsp;&nbsp;&nbsp;
+                        例如：1234_201804_申请数据.xls
+                    </span>
+                    <!--下载模版-->
+                    <a class="btn btn-outline btn-primary btn-xs" th:href="@{/patentDataImport/dow}"
+                       style="display:none;">下载模版</a>
+                    <div>
+                        <span id="file_name"></span><br/>
+                        <span id="file_size"></span><br/>
+                        <span style="color:red;" id="file_error"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" id="parentDataImp_div2" style="display:none;">
+    <span id="scjd"></span><br/>
+    <img th:src="@{/img/loding.gif}" alt="正在处理" style="width:100px;height:100px;"/>
+</div>
+<script th:src="@{/js/patentDataImport/index.js}" type="text/javascript" charset="utf-8"></script>

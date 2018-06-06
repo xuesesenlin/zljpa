@@ -1,0 +1,8 @@
+打包命令
+mvn install -Dmaven.test.skip=true
+
+jar冲突监测方法
+1、在命令行中，跳转到项目路径。
+2、先清除，再重新安装：mvn clean install. 如果不想运行单元测试类，则运行命令:mvn -Dmaven.test.skip=true clean install
+3、查询依赖关系，并导入到名为tree.txt的文件中：mvn dependency:tree -Dverbose > tree.txt
+4、在tree.txt文件中搜索：conflict。如果存在，则有冲突jar包，需确定jar包版本，把不需要的jar包版本排除。

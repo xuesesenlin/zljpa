@@ -1,0 +1,11 @@
+#sub{
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+    height: 30px;
+    border-radius: 5px;
+    border: 0;
+    background: #fff;
+    color: #1ab394;
+    margin-top: 30px;
+}

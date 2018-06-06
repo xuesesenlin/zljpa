@@ -1,0 +1,419 @@
+<div class="wrapper wrapper-content animated fadeInRight" id="parentDataImp_div">
+    <div class="row">
+        <div class="col-lg-12 col-xs-12 col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        <label>统计年月</label>
+                        <input type="text" id="tjny" name="tjny"
+                               readonly="readonly" required=""
+                               style="background:#fff;width:110px;"/>
+                        <input class="btn btn-outline btn-primary btn-xs" type="button"
+                               onclick="init()" value="查询"/>
+                        <input class="btn btn-outline btn-primary btn-xs" type="button"
+                               onclick="exp_lx()" value="导出类型"/>
+                        <input class="btn btn-outline btn-primary btn-xs" type="button"
+                               onclick="exp_qy()" value="导出区域"/>
+                        个人发明 单位发明 两列数据需完善
+                    </h5>
+                </div>
+                <div class="ibox-content">
+                    <h5>全市专利申请受理、批准数量统计表</h5>
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                        <tr>
+                            <th style="text-align: center;" colspan="3" rowspan="3">汇总代码</th>
+                            <th style="text-align: center;" rowspan="3">合计</th>
+                            <th style="text-align: center;" colspan="3" rowspan="2">按专利类型分</th>
+                            <th style="text-align: center;" colspan="6">在专利申请中</th>
+                        </tr>
+                        <tr>
+                            <th style="text-align: center;" rowspan="2">个人发明（非职务）</th>
+                            <th style="text-align: center;" rowspan="2">单位发明（职务）</th>
+                            <th style="text-align: center;" colspan="4">其中</th>
+                        </tr>
+                        <tr>
+                            <th style="text-align: center;">发明专利</th>
+                            <th style="text-align: center;">实用新型专利</th>
+                            <th style="text-align: center;">外观设计专利</th>
+                            <th style="text-align: center;">大专院校</th>
+                            <th style="text-align: center;">科研单位</th>
+                            <th style="text-align: center;">工矿企业</th>
+                            <th style="text-align: center;">机关团体</th>
+                        </tr>
+                        <tr>
+                            <th style="text-align: center;">甲</th>
+                            <th style="text-align: center;">已</th>
+                            <th style="text-align: center;">丙</th>
+                            <th style="text-align: center;">1</th>
+                            <th style="text-align: center;">2</th>
+                            <th style="text-align: center;">3</th>
+                            <th style="text-align: center;">4</th>
+                            <th style="text-align: center;">5</th>
+                            <th style="text-align: center;">6</th>
+                            <th style="text-align: center;">7</th>
+                            <th style="text-align: center;">8</th>
+                            <th style="text-align: center;">9</th>
+                            <th style="text-align: center;">10</th>
+                        </tr>
+                        </thead>
+                        <tbody id="table_data">
+                        <tr id="table_data_a_a">
+                            <td rowspan="3">专利申请受理</td>
+                            <td>本月实际</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr id="table_data_b_a">
+                            <td>本年本月止累计</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr id="table_data_c_a">
+                            <td>1985年4月以来总累计</td>
+                            <td>3</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr id="table_data_a_b">
+                            <td rowspan="3">专利申请批准</td>
+                            <td>本月实际</td>
+                            <td>4</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr id="table_data_b_b">
+                            <td>本年本月止累计</td>
+                            <td>5</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr id="table_data_c_b">
+                            <td>1985年4月以来总累计</td>
+                            <td>6</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr id="table_data_a_c">
+                            <td rowspan="3">有效</td>
+                            <td>本月实际</td>
+                            <td>7</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr id="table_data_b_c">
+                            <td>本年本月止累计</td>
+                            <td>8</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr id="table_data_c_c">
+                            <td>1985年4月以来总累计</td>
+                            <td>9</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <br/>
+                    <h5>各县市（区）专利申请、授权、有效情况</h5>
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                        <tr>
+                            <th style="text-align: center;"></th>
+                            <th style="text-align: center;">全市合计</th>
+                            <th style="text-align: center;">市区合计</th>
+                            <th style="text-align: center;">长安</th>
+                            <th style="text-align: center;">桥东</th>
+                            <th style="text-align: center;">桥西</th>
+                            <th style="text-align: center;">新华</th>
+                            <th style="text-align: center;">矿区</th>
+                            <th style="text-align: center;">裕华</th>
+                            <th style="text-align: center;">高新区</th>
+                            <th style="text-align: center;">县区合计</th>
+                            <th style="text-align: center;">井陉县</th>
+                            <th style="text-align: center;">正定县</th>
+                            <th style="text-align: center;">栾城县</th>
+                            <th style="text-align: center;">行唐县</th>
+                            <th style="text-align: center;">灵寿县</th>
+                            <th style="text-align: center;">高邑县</th>
+                            <th style="text-align: center;">深泽县</th>
+                            <th style="text-align: center;">赞皇县</th>
+                            <th style="text-align: center;">无极县</th>
+                            <th style="text-align: center;">平山县</th>
+                            <th style="text-align: center;">元氏县</th>
+                            <th style="text-align: center;">赵县</th>
+                            <th style="text-align: center;">辛集市</th>
+                            <th style="text-align: center;">藁城市</th>
+                            <th style="text-align: center;">晋州市</th>
+                            <th style="text-align: center;">新乐市</th>
+                            <th style="text-align: center;">鹿泉市</th>
+                        </tr>
+                        </thead>
+                        <tbody id="table_data2">
+                        <tr id="table_data2_a">
+                            <td>申请量</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                        </tr>
+                        <tr id="table_data2_b">
+                            <td>本年本月止累计</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                        </tr>
+                        <tr id="table_data2_c">
+                            <td>授权量</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                        </tr>
+                        <tr id="table_data2_d">
+                            <td>本年本月止累计</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                        </tr>
+                        <tr id="table_data2_e">
+                            <td>有效量</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                        </tr>
+                        <tr id="table_data2_f">
+                            <td>本年本月止累计</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                            <td style="text-align: center;">0</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display:none;" id="dow">
+</div>
+<script th:src="@{/utilJs/dateUtils.js}" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/js/monthlyReport/index.js}" type="text/javascript" charset="utf-8"></script>

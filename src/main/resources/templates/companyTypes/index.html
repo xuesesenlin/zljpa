@@ -1,0 +1,33 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12 col-xs-12 col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <a class="btn btn-outline btn-primary btn-xs"
+                       onclick="javascript:$('#form_save').show();">新增</a>
+                    <form id="form_save" action="#" method="post" style="display:none;">
+                        <input type="hidden" name="uuid" value=""/>
+                        <input type="text" name="companyTypes" placeholder="请输入类型名称" value=""/>
+                        <input class="btn btn-outline btn-primary btn-xs" type="button" onclick="save()"
+                               value="确定"/>
+                    </form>
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                        <tr>
+                            <th style="text-align: center;">序号</th>
+                            <th style="text-align: center;">公司类型</th>
+                        </tr>
+                        </thead>
+                        <tbody id="table_data">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--日期格式化工具类-->
+<script th:src="@{/utilJs/dateUtils.js}" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/js/companyTypes/index.js}" type="text/javascript" charset="utf-8"></script>

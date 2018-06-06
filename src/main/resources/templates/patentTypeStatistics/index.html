@@ -1,0 +1,109 @@
+<div class="wrapper wrapper-content animated fadeInRight" id="parentDataImp_div">
+    <div class="row">
+        <div class="col-lg-12 col-xs-12 col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5></h5>
+                    <form id="form_query" action="#" method="get">
+                        <label>导入年月:</label>
+                        <input type="text" id="drnyStar" name="drnyStar"
+                               readonly="readonly" placeholder="开始时间" required=""
+                               style="background:#fff;width:110px;"/>
+                        <label>至:</label>
+                        <input type="text" id="drnyEnd" name="drnyEnd"
+                               readonly="readonly" placeholder="结束时间" required=""
+                               style="background:#fff;width:110px;"/>
+                        <label>专利类型:</label>
+                        <select name="zllx" id="zllx" style="width:110px;">
+                            <option value="">请选择</option>
+                        </select>
+                        <label>申请人类型:</label>
+                        <select name="sqrlx" id="sqrlx" style="width:110px;">
+                            <option value="">请选择</option>
+                        </select>
+                        <label>企业类型:</label>
+                        <select name="qylx" id="qylx" style="width:110px;">
+                            <option value="">请选择</option>
+                        </select>
+                        <label>申请日期:</label>
+                        <input type="text" id="sqrqStar" name="sqrqStar"
+                               readonly="readonly" placeholder="开始时间" required=""
+                               style="background:#fff;width:110px;"/>
+                        <label>至:</label>
+                        <input type="text" id="sqrqEnd" name="sqrqEnd"
+                               readonly="readonly" placeholder="结束时间" required=""
+                               style="background:#fff;width:110px;"/>
+                        <label>所在城市:</label>
+                        <select id="szss" name="szss" onchange="getSSXLD('#szsc',this)" style="width:110px;">
+                            <option value="">请选择</option>
+                        </select>
+                        <select id="szsc" name="szsc" onchange="getSSXLD('#szsx',this)" style="width:110px;">
+                            <option value="">请选择</option>
+                        </select>
+                        <select id="szsx" name="szsx" style="width:110px;">
+                            <option value="">请选择</option>
+                        </select>
+                        <input class="btn btn-outline btn-primary btn-xs" type="button" value="查询"
+                               onclick="query_data()"/>
+                        <input class="btn btn-outline btn-primary btn-xs" type="button"
+                               onclick="export_result_data()" value="导出查询结果"/>
+                    </form>
+                </div>
+                <div class="ibox-content">
+                    <h5>申请情况</h5>
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                        <tr id="table_data_a">
+                            <th style="text-align: center;">专利类型</th>
+                        </tr>
+                        </thead>
+                        <tbody id="table_data">
+                        <tr id="table_data_b">
+                            <td style="text-align: center;">数量</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <br/>
+                    <h5>授权情况</h5>
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                        <tr id="table_data2_a">
+                            <th style="text-align: center;">专利类型</th>
+                        </tr>
+                        </thead>
+                        <tbody id="table_data2">
+                        <tr id="table_data2_b">
+                            <td style="text-align: center;">数量</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <br/>
+                    <h5>有效情况</h5>
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                        <tr id="table_data3_a">
+                            <th style="text-align: center;">专利类型</th>
+                        </tr>
+                        </thead>
+                        <tbody id="table_data3">
+                        <tr id="table_data3_b">
+                            <td style="text-align: center;">数量</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display:none;">
+    <form id="form_exp" th:action="@{/patentTypeStatistics/patentTypeStatistics/exp}" method="post">
+        <input type="hidden" name="a" id="data_a"/>
+        <input type="hidden" name="b" id="data_b"/>
+        <input type="hidden" name="c" id="data_c"/>
+    </form>
+</div>
+<script th:src="@{/utilJs/dateUtils.js}" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/js/patentTypeStatistics/index.js}" type="text/javascript" charset="utf-8"></script>

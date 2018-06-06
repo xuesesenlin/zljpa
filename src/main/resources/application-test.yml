@@ -1,0 +1,84 @@
+#test 测试环境
+
+#tocmat设置
+server:
+  port: 9000
+  tomcat:
+    uri-encoding: UTF-8
+#    允许的http请求
+  port-header: HEAD,PUT,DELETE,OPTIONS,TRACE,COPY,SEARCH,PROPFIND
+spring:
+# class文件编码
+  mandatory-file-encoding: UTF-8
+  thymeleaf:
+    prefix: classpath:/templates
+    encoding: UTF-8
+#?是否开启thymeleaf缓存，生产期建议false
+  cache: false
+
+#    datasource
+#log4j jdbc
+  datasource:
+    url: jdbc:log4jdbc:mysql://localhost/zl2?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: net.sf.log4jdbc.DriverSpy
+#    springboot jdbc
+#  datasource:
+#    url: jdbc:mysql://localhost/zl2?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#    username: root
+#    password: root
+#    driver-class-name: com.mysql.jdbc.Driver
+
+#     控制台彩色输出
+  output:
+    ansi:
+      enabled: ALWAYS
+#      应对OPTIONS请求，权限判断会出现此请求
+  mvc:
+    dispatch-options-request: true
+#    默认静态路径
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/static/,classpath:/public/,file:${imgPath}
+
+#  jpa
+  jpa:
+    hibernate:
+#    是否自动创建跟新表
+      ddl-auto: update
+#      是否打印sql
+#    show-sql: true
+#    是否启用aop
+  aop:
+    auto: true
+#默认分页条数
+page:
+  pageSize: 15
+
+#banner 启动动画文件
+# 启动动画文件编码
+banner:
+  charset: UTF-8
+# 启动动画文件地址
+#  location: classpath:banner.txt
+
+logging:
+  file: zljpa.log
+  level:
+    com.zlj.zl: debug
+
+#上传/导入文件地址
+upLoad:
+  path: D://zlUpload/
+#sql备份地址
+databaseSavePath: D://
+
+#启用健康检查
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: com.zlj.zl

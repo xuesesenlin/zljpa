@@ -1,0 +1,1 @@
+select p.uuid,DATE_FORMAT(from_unixtime(p.imp_date/1000),'%Y-%m') imp_date, count(distinct DATE_FORMAT(from_unixtime(p.imp_date/1000),'%Y-%m')) from patent_data_put_table p

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="context-path" th:content="@{/}"/>
+
+    <title>专利局</title>
+
+    <link rel="icon" type="image/x-icon" th:href="@{/favicon.ico}"/>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet"/>
+    <link th:href="@{/css/animate.css}" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+
+</head>
+
+<body class="gray-bg">
+
+<div class="middle-box text-center loginscreen animated fadeInDown" style="padding-top:300px;">
+    <div>
+        <div>
+            <h3>石家庄市专利数据管理信息系统</h3>
+        </div>
+        <form class="m-t" id="login_form" action="#" method="post">
+            <div class="form-group">
+                <!--<input type="text"-->
+                <!--class="form-control"-->
+                <!--placeholder="请输入用户名"-->
+                <!--required=""-->
+                <!--name="username"-->
+                <!--value="weihuzu12345"/>-->
+                <select name="username">
+                    <option value="weihuzu12345">用户1</option>
+                    <option value="guanli1">管理员</option>
+                    <option value="chaoji1">超级管理员</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="password"
+                       class="form-control"
+                       placeholder="请输入密码"
+                       required=""
+                       name="password"
+                       value="weihuzu12345"/>
+            </div>
+            <input type="button" class="btn btn-block btn-outline btn-primary full-width m-b" value="登录"
+                   id="login_button"/>
+
+        </form>
+        <p class="m-t"><strong>技术支持:</strong><span style="color:red;">品逸科技</span> &copy; 1970-2018</p>
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script th:src="@{/js/jquery-2.1.1.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/login/login.js}"></script>
+</body>
+
+</html>

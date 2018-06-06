@@ -1,0 +1,1 @@
+org.springframework.context.ApplicationContextInitializer=\com.zlj.zl.sysConfig.initializer.MyApplicationContextInitializer

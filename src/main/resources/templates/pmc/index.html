@@ -1,0 +1,41 @@
+<link th:href="@{/css/plugins/jsTree/style.min.css}" rel="stylesheet"/>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-6 col-xs-6 col-sm-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        <a class="btn btn-outline btn-primary btn-xs" onclick="or_add(0,0)">新增省</a>
+                        <form action="#" method="post" id="or_form_add" style="display:none;">
+                            <input id="or_parents" name="patentUuid" style="display:none;" value="0"/>
+                            <input id="or_types" name="types" style="display:none;" value="1"/>
+                            <label>名称</label>
+                            <input id="or_name" type="text" name="names"/>
+                            <input class="btn btn-outline btn-primary btn-xs" type="button" value="确定"
+                                   onclick="or_submit()"/>
+                        </form>
+                        <form action="#" method="post" id="or_form_update" style="display:none;">
+                            <input id="or_uuid" name="uuid" style="display:none;"/>
+                            <label>名称</label>
+                            <input id="or_name2" type="text" name="names"/>
+                            <input class="btn btn-outline btn-primary btn-xs" type="button" value="确定"
+                                   onclick="or_submit2()"/>
+                        </form>
+                    </h5>
+                </div>
+                <div class="ibox-content">
+                    <div id="jstree1">
+                        <ul>
+                            <li style="width:50px;">
+                                <span onclick="click_tree(this)" lx="0" parents="0">省市县</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/plugins/jsTree/jstree.min.js}"></script>
+<script th:src="@{/js/pmc/index.js}" type="text/javascript" charset="utf-8"></script>

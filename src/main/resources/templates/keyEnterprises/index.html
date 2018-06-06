@@ -1,0 +1,43 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <form action="#" id="ro_form_put" method="post">
+        <div class="row">
+            <div class="col-lg-12 col-xs-12 col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>
+                            <label>查询:</label>
+                            <label>企业类型:</label>
+                            <select id="qylx" name="qylx">
+                                <option value="0" selected="selected">请选择</option>
+                            </select>
+                            <input class="btn btn-outline btn-primary btn-xs" type="button" onclick="click_query()"
+                                   value="查询"/>
+                            <input class="btn btn-outline btn-warning btn-xs" type="button" onclick="click_put()"
+                                   value="修改"/>
+                        </h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <input type="hidden" name="uuid" value=""/>
+                            <div class="col-lg-6 col-xs-6 col-sm-6">
+                                <label>第一优先级关键字：</label>
+                                <div style="height:500px;width:100%;">
+                                <textarea id="keyworda" name="keyworda"
+                                          style="resize:none;width:100%;height:100%;max-width:100%;max-height:100%;"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-xs-6 col-sm-6">
+                                <label>第二优先级关键字：</label>
+                                <div style="height:500px;width:100%;">
+                                <textarea id="keywordb" name="keywordb"
+                                          style="resize:none;width:100%;height:100%;max-width:100%;max-height:100%;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script th:src="@{/js/keyEnterprises/index.js}" type="text/javascript" charset="utf-8"></script>
